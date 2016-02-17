@@ -1,0 +1,18 @@
+[%	
+	var headerTemplate : Template := TemplateFactory.load('Header.egl');
+	var footerTemplate : Template := TemplateFactory.load('Footer.egl');
+	
+	var title : String := 'Meta-Model';
+	var div : String := 'divHelloWorld';
+	
+	headerTemplate.populate('title', title);
+	headerTemplate.populate('div', div);
+%]
+
+[%=headerTemplate.process()%]
+<div id="container">
+	<div id="header">
+		<h1><a href="index.html"> Meta-Model</a></h1>
+	</div>
+
+[%=footerTemplate.process()%]

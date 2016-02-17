@@ -1,0 +1,14 @@
+@namespace(uri="elementoMonitorizable", prefix="")
+
+package elementoMonitorizable;
+
+class Maquina {
+	attr String name;
+	val Atributos atrib;
+
+}
+
+class Atributos {
+	attr String descripcion;
+	
+}
