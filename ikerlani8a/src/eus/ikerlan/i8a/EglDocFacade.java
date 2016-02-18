@@ -17,7 +17,7 @@ public class EglDocFacade {
 		                             model.getName().substring(0, model.getName().lastIndexOf(".")) : 
 		                             model.getName();
 		final File outputDir = new File(outputDirPath);
-//		
+
 //		System.out.println("Generating documentation for "+metaModelName);
 //		
 //		// Set directory from which nested templates will be loaded
