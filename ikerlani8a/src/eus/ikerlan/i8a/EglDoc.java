@@ -9,6 +9,7 @@ public class EglDoc {
 		File model = new File(args[0]);
 		
 		 eglDF.generate(model, args[1]);
+		 
 	}
 
 }

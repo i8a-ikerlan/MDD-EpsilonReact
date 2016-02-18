@@ -16,7 +16,6 @@ public class EglDocFacade {
 		final String metaModelName = model.getName().contains(".") ?
 		                             model.getName().substring(0, model.getName().lastIndexOf(".")) : 
 		                             model.getName();
-//		final URI  outputDirUri = UriUtil.fileToUri(new File(outputDirPath));
 		final File outputDir = new File(outputDirPath);
 //		
 //		System.out.println("Generating documentation for "+metaModelName);
