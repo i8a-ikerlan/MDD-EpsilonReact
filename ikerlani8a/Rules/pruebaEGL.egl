@@ -1,25 +1,37 @@
 [%	
 	var headerTemplate : Template := TemplateFactory.load('Header.egl');
 	var footerTemplate : Template := TemplateFactory.load('Footer.egl');
+	var createTextAreaTemplate : Template := TemplateFactory.load('CreateElement.egl');
+	var createListTemplate : Template := TemplateFactory.load('CreateList.egl');
+	var generateListTemplate : Template := TemplateFactory.load('GenerateList.egl');
 	
-	var title : String := 'My Title';
-	var divReact : String := 'build/react.js';
+	var title : String := 'My Prueba Title';
+	var scriptReact : String := 'build/react.js';
 	var divHW : String := 'divHW';
-	var package : String = dataType.getEPackage().name;
+	var metaModel: String := 'ElementoMonitorizable';
+	
+	
 		
 	headerTemplate.populate('title', title);
-	headerTemplate.populate('divReact', divReact);
+	headerTemplate.populate('scriptReact', scriptReact);
+	createTextAreaTemplate.populate('metaModel', metaModel);
+	createListTemplate.populate('metaModel', metaModel);
 %]
 
 [%=headerTemplate.process()%]
-		<h1>Package: [%=package%]</h1>
-		<h2>DataType [%=dataType.name%]</h2>
         
 		<div id="[%=divHW%]"></div>
 			<script src="js/helloword.js"></script>
 		
 		<div id="header">
-			<h1><a href="index.html"> Meta-Model</a></h1>
+			<h1><a href="index.html"> Meta-Model</a> [%=metaModel%]</h1>
 		</div>
+		
+		<div id="list"></div>			
+		<div id="pReact"></div>
+			
+[%=createTextAreaTemplate.process()%]
+
+[%=generateListTemplate.process()%]		
 
 [%=footerTemplate.process()%]

@@ -1,0 +1,121 @@
+		<script>
+			var MachineList = React.createClass({
+				displayName: "PersonTable",
+			
+				render: function render() {
+					var allData = this.props.data
+					return React.createElement(
+						"div",
+						null,
+						React.createElement(
+							"table",
+							{
+								className: "mdl-data-table mdl-js-data-table mdl-shadow--2dp",
+								style: { width: "100%" } 
+							},
+							React.createElement(
+								"thead",
+								null,
+								React.createElement(
+									"tr",
+									null,
+									React.createElement(
+										"th",
+										{ className: "mdl-data-table__cell--non-numeric" },
+										"id"
+									),
+									React.createElement(
+										"th",
+										{ className: "remember-direction-col" },
+										"Direction"
+									),
+									React.createElement(
+										"th",
+										{ className: "remember-distance-col" },
+										"Description"
+									)
+								)
+							),
+							React.createElement(
+								"tbody",
+								null,
+								// Creates new "MachineRow" elements. For each i, new element (map = for)
+								this.props.data.map(function (machine, i) {
+									 return React.createElement(MachineRow, { key: i, data: machine, allData: allData});
+								})
+							)
+						)
+					);
+				 }	
+			});
+			 
+			var MachineRow = React.createClass({
+			    displayName: "PersonRow",
+			
+			    render: function render() {
+			    	function onClickEdit(row) {
+				
+					}
+					
+			
+					function onClickDelete(row) {
+						var newData = this.props.allData.filter(function (d, i) {
+							return i != row;
+						});
+						
+						console.log(row);
+						console.log(newData);
+						this.setState({ allData: newData });
+					}
+			
+			        return React.createElement(
+			            "tr",
+			            { key: 0 },
+			            React.createElement(
+			                "td",
+			                null,
+			                this.props.data.id
+			            ),
+			            React.createElement(
+			                "td",
+			                null,
+			                this.props.data.Direction
+			            ),
+			            React.createElement(
+			                "td",
+			                null,
+			                this.props.data.Description
+			            ),
+			            React.createElement(
+			                "td",
+			                null,
+			                React.createElement(
+								'button', 
+								{'onClick': onClickEdit.bind(this, this.props.data.id)}, 
+								'Edit'
+							)
+			            ),
+			            React.createElement(
+			                "td",
+			                null,
+			                React.createElement(
+								'button', 
+								{'onClick': onClickDelete.bind(this, this.props.data.id-1)}, 
+								'Delete'
+							)
+			            )
+			        );
+			    }
+			});
+/* Aqui se tienen que cargar todas las maquinas que se encuentren en el modelo que llega como entrada   */			
+			var rows = 
+		   			[{ "id": 1, "Direction": "Bilbao", "Description": "Not signal" }, 
+           			 { "id": 2, "Direction": "Arrasate", "Description": "With errors" }, 
+         			 { "id": 3, "Direction": "Donostia", "Description": "Available" }];
+/*---------------------------------------------------------------------------------------------------------*/         			 
+			
+			React.render(
+					React.createElement(MachineList, {data:rows}), document.getElementById("list")
+			)
+			
+		</script>	

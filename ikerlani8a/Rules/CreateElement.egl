@@ -1,0 +1,38 @@
+		<script>
+			var [%=metaModel%] = React.createClass({
+			
+		  	   	propTypes: {
+					txt: React.PropTypes.string
+				},
+		
+		   	   	getInitialState:function(){
+		   	   		return{
+		   	   			txt: "Initial state"
+		   	   		}
+		   	   	},
+		
+				updateTxt: function(ev) {
+						this.setState({
+							txt: ev.target.value
+						});
+					},
+		
+		
+		        render:function(){
+		            return (
+		            	React.DOM.div(null,
+		            		React.DOM.textarea({
+		            			value: this.state.txt,
+								onChange: this.updateTxt
+							}),
+		                    React.DOM.h1(null, this.state.txt
+		                    )
+		             	)
+		    		)
+		        }
+		 	});  
+			
+			React.render(
+				React.createElement([%=metaModel%]), document.getElementById("pReact")
+			)
+		</script>	

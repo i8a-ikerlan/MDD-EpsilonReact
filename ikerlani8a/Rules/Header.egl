@@ -4,8 +4,11 @@
 	<head>
 	  <meta charset="UTF-8">
 	  <title>[%=title%]</title>
+	  <link rel="stylesheet"
+        href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" />
 	  <script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.11.2/react-with-addons.js"></script>
-	  <script src="[%=divReact%]"></script>
+	  <script src="[%=scriptReact%]"></script>
+	  <script src="build/react-with-addons.js"></script>
 	</head>
 	
 	<body>

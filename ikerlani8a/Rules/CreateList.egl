@@ -1,0 +1,60 @@
+		<script>
+			var MachineList = React.createClass({
+			    displayName: "PersonTable",
+			
+			    getInitialState: function getInitialState() {
+			        return {
+			        
+// Aqui tendria que pasarse mediante el JAVA todas las maquinas que estén en el modelo
+
+			            data: [{ "id": 1, "fname": "Maquina 1", "lname": " - Arrasate" }, { "id": 2, "fname": "Maquina 2", "lname": " - Bilbao" }, { "id": 3, "fname": "Maquina 3", "lname": " - Donosti" }]
+			        };
+// -------------------------------------------------------------------------------------------------------			        
+			    },
+			    render: function render() {
+			        return React.createElement(
+			            "table",
+			            null,
+			            this.state.data.map(function (person, i) {
+			                return React.createElement(PersonRow, { key: i, data: person });
+			            })
+			        );
+			    }
+			});
+			var PersonRow = React.createClass({
+			    displayName: "PersonRow",
+			
+			    render: function render() {
+			        return React.createElement(
+			            "tr",
+			            { key: 0 },
+			            React.createElement(
+			                "td",
+			                null,
+			                this.props.data.id
+			            ),
+			            React.createElement(
+			                "td",
+			                null,
+			                this.props.data.fname
+			            ),
+			            React.createElement(
+			                "td",
+			                null,
+			                this.props.data.lname
+			            ),
+			             React.createElement(
+			                "td",
+			                null,
+			                this.props.data.lname
+			            )
+			        );
+			    }
+			});
+			
+			React.render(
+					React.createElement(MachineList), document.getElementById("list")
+			)
+			
+			
+		</script>		

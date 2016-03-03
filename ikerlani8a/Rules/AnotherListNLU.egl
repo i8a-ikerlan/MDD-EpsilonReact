@@ -1,0 +1,43 @@
+/* Table React Component */
+var Table = React.createClass({
+
+    render: function render() {
+        var _self = this;
+
+        var thead = React.DOM.thead({},
+            React.DOM.tr({},
+                this.props.t.cols.map(function (col) {
+                    return React.DOM.th({}, col);
+            })));
+
+        var tbody = this.props.t.rows.map(function (row) {
+            return React.DOM.tr({},
+            _self.props.t.cols.map(function (col) {
+                return React.DOM.td({}, row[col] || "");
+            }));
+        });
+
+        return React.DOM.table({}, [thead, tbody]);
+    }
+
+});
+
+var container = document.querySelector("#container");
+
+var tableModel = {
+    cols: ["Name", "Age"],
+    rows: [ {
+             "Name": "Chase",
+             "Age": "27"
+            },
+            {
+              "Name": "Chsssase",
+              "Age": "45"
+            }
+          ]
+
+}
+React.render(
+  React.createElement(Table, {t: tableModel}), 
+  document.getElementById("app")
+);
