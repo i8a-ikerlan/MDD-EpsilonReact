@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ElementoMonitorizable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="elementoMonitorizable" xmi:id="_TzL28ORDEeWnY9Nh_VlvtQ">
+  <machines xmi:id="_UQ8J8ORDEeWnY9Nh_VlvtQ" name="M1">
+    <atrib xmi:id="_UuV3oORDEeWnY9Nh_VlvtQ" descripcion="Available" location="Bilbao"/>
+  </machines>
+  <machines xmi:id="_VGWH8ORDEeWnY9Nh_VlvtQ" name="M2">
+    <atrib xmi:id="_fAYIIORDEeWnY9Nh_VlvtQ" descripcion="Not signal" location="Donostia"/>
+  </machines>
+  <machines xmi:id="_Ve5K0ORDEeWnY9Nh_VlvtQ" name="M3">
+    <atrib xmi:id="_Zp5LoORDEeWnY9Nh_VlvtQ" descripcion="No information" location="Arrasate"/>
+  </machines>
+  <machines xmi:id="_iBAOIOXQEeWnY9Nh_VlvtQ" name="M4">
+    <atrib xmi:id="_j2ZpgOXQEeWnY9Nh_VlvtQ" descripcion="Broken" location="Hernani"/>
+  </machines>
+</ElementoMonitorizable>

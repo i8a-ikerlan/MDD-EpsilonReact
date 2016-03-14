@@ -1,9 +1,29 @@
 		<script>
 			var MachineList = React.createClass({
-				displayName: "PersonTable",
+				
+				getInitialState: function() {
+			    	console.log("He pasado por getInitialState");
+			    	var m = this.props.data;
+			    	return {m};
+  				},
 			
-				render: function render() {
+				render: function() {
+					var myList = this
 					var allData = this.props.data
+					
+				
+  				
+	  				function onClickDelete(row) {
+						console.log("Datos iniciales");
+						console.log(this.state.m);
+						var newData = this.state.m.filter(function (d, i) {
+							return i != row;
+						});
+						
+						this.setState({m:newData});
+					}
+					
+					
 					return React.createElement(
 						"div",
 						null,
@@ -33,85 +53,80 @@
 										"th",
 										{ className: "remember-distance-col" },
 										"Description"
-									)
+									),
+									React.createElement(
+										"th",
+										{ className: "remember-distance-col" },
+										"Edit"
+									),
+									React.createElement(
+										"th",
+										{ className: "remember-distance-col" },
+										"Delete"
+									),
+									React.createElement(
+										"th",
+										{ className: "remember-distance-col" },
+										React.createElement(
+											'button',
+											{ 'onClick': null, className: 'teal darken-1 waves-effect waves-circle waves-light btn-floating secondary-content' },
+											'Add'
+										)
+									)	
 								)
 							),
 							React.createElement(
 								"tbody",
 								null,
 								// Creates new "MachineRow" elements. For each i, new element (map = for)
-								this.props.data.map(function (machine, i) {
-									 return React.createElement(MachineRow, { key: i, data: machine, allData: allData});
+								this.state.m.map(function (machine, i) {
+									 return React.createElement(
+								            "tr",
+								            { key: i },
+								            React.createElement(
+								                "td",
+								                null,
+								                machine.id
+								            ),
+								            React.createElement(
+								                "td",
+								                null,
+								                machine.Direction
+								            ),
+								            React.createElement(
+								                "td",
+								                null,
+								                machine.Description
+								            ),
+								            React.createElement(
+								                "td",
+								                null,
+								                React.createElement(
+													'button', 
+													{'onClick': null}, 
+													'Edit'
+												)
+								            ),
+								            React.createElement(
+								                "td",
+								                null,
+								                React.createElement(
+													'button', 
+													{'onClick': onClickDelete.bind(myList, i) }, 
+													'Delete'
+												)
+								            )
+								        );
 								})
 							)
 						)
 					);
 				 }	
-			});
 			 
-			var MachineRow = React.createClass({
-			    displayName: "PersonRow",
-			
-			    render: function render() {
-			    	function onClickEdit(row) {
-				
-					}
-					
-			
-					function onClickDelete(row) {
-						var newData = this.props.allData.filter(function (d, i) {
-							return i != row;
-						});
-						
-						console.log(row);
-						console.log(newData);
-						this.setState({ allData: newData });
-					}
-			
-			        return React.createElement(
-			            "tr",
-			            { key: 0 },
-			            React.createElement(
-			                "td",
-			                null,
-			                this.props.data.id
-			            ),
-			            React.createElement(
-			                "td",
-			                null,
-			                this.props.data.Direction
-			            ),
-			            React.createElement(
-			                "td",
-			                null,
-			                this.props.data.Description
-			            ),
-			            React.createElement(
-			                "td",
-			                null,
-			                React.createElement(
-								'button', 
-								{'onClick': onClickEdit.bind(this, this.props.data.id)}, 
-								'Edit'
-							)
-			            ),
-			            React.createElement(
-			                "td",
-			                null,
-			                React.createElement(
-								'button', 
-								{'onClick': onClickDelete.bind(this, this.props.data.id-1)}, 
-								'Delete'
-							)
-			            )
-			        );
-			    }
 			});
 /* Aqui se tienen que cargar todas las maquinas que se encuentren en el modelo que llega como entrada   */			
 			var rows = 
-		   			[{ "id": 1, "Direction": "Bilbao", "Description": "Not signal" }, 
-           			 { "id": 2, "Direction": "Arrasate", "Description": "With errors" }, 
-         			 { "id": 3, "Direction": "Donostia", "Description": "Available" }];
+		   			[[%=rows%]];
 /*---------------------------------------------------------------------------------------------------------*/         			 
 			
 			React.render(

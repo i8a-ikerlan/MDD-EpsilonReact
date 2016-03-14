@@ -5,17 +5,37 @@
 	var createListTemplate : Template := TemplateFactory.load('CreateList.egl');
 	var generateListTemplate : Template := TemplateFactory.load('GenerateList.egl');
 	
+	var element: ElementoMonitorizable:= ElementoMonitorizable.allInstances().at(0);
+	var maquina: String:= element.machines.get(0).name;
+	
+	
 	var title : String := 'My Prueba Title';
 	var scriptReact : String := 'build/react.js';
 	var divHW : String := 'divHW';
 	var metaModel: String := 'ElementoMonitorizable';
+	var rows: String := '';
 	
 	
-		
+	for (machine in element.machines){
+		var newRow: String := "{'id':'"+ machine.name + "', 'Direction': '" + machine.atrib.location + 
+		"','Description':'" + machine.atrib.descripcion + "'}";
+		if(machine == maquina){
+			rows = rows + newRow;
+		}
+		else{
+			rows = rows + "," + newRow;
+		}
+	}
+	
+
+	
 	headerTemplate.populate('title', title);
 	headerTemplate.populate('scriptReact', scriptReact);
 	createTextAreaTemplate.populate('metaModel', metaModel);
 	createListTemplate.populate('metaModel', metaModel);
+	generateListTemplate.populate('rows', rows);
+	generateListTemplate.populate('nameMaq2', "Pruebaa");
+	
 %]
 
 [%=headerTemplate.process()%]
@@ -27,7 +47,8 @@
 			<h1><a href="index.html"> Meta-Model</a> [%=metaModel%]</h1>
 		</div>
 		
-		<div id="list"></div>			
+		<div id="list"></div>
+		<div id="empty"></div>			
 		<div id="pReact"></div>
 			
 [%=createTextAreaTemplate.process()%]
