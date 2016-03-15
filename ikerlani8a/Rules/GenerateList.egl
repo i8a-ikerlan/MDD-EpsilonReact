@@ -23,6 +23,16 @@
 						this.setState({m:newData});
 					}
 					
+					function onClickAdd(){
+						var newId = this.refs.inputId.value;
+						var newDirection = myList.refs.inputDirection.value;
+						var newDescription = myList.refs.inputDescription.value;
+						var theRow = {'id': newId, 'Direction': newDirection, 'Description':newDescription};
+			
+						var contAdded = this.state.m.concat(theRow);
+						this.setState({m: contAdded});
+					}
+					
 					
 					return React.createElement(
 						"div",
@@ -69,7 +79,7 @@
 										{ className: "remember-distance-col" },
 										React.createElement(
 											'button',
-											{ 'onClick': null, className: 'teal darken-1 waves-effect waves-circle waves-light btn-floating secondary-content' },
+											{ 'onClick': onClickAdd.bind(myList), className: 'teal darken-1 waves-effect waves-circle waves-light btn-floating secondary-content' },
 											'Add'
 										)
 									)	
@@ -118,6 +128,15 @@
 								            )
 								        );
 								})
+							)
+						),
+						React.createElement(
+							"table",
+							{className: "mdl-data-table mdl-js-data-table mdl-shadow--2dp", style: { width: "40%" }},
+							React.createElement("tr",null,
+								React.createElement("td",null,React.createElement("input",{ref:'inputId',size:"1"},"  ")),
+								React.createElement("td",null,React.createElement("input",{ref:'inputDirection',size:"20"}," ")),
+								React.createElement("td",null,React.createElement('input',{ref:'inputDescription',size:"20"}," "))
 							)
 						)
 					);
